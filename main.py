@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from textblob import TextBlob
 
 app = Flask(__name__)
 
@@ -10,13 +11,21 @@ def home():
 def generate_playlist():
     mood = request.form["mood"]  # Get the mood from the form
     
-    # For now, we'll use placeholder songs based on mood
-    if mood.lower() == "happy":
-        playlist = ["Song A", "Song B", "Song C"]
-    elif mood.lower() == "sad":
-        playlist = ["Song D", "Song E", "Song F"]
+    # Analyze sentiment using TextBlob
+    analysis = TextBlob(mood)
+    polarity = analysis.sentiment.polarity  # Polarity: -1 to 1 (negative to positive)
+    subjectivity = analysis.sentiment.subjectivity  # Subjectivity: 0 to 1 (objective to subjective)
+
+    # For now, we'll print out polarity and subjectivity just for testing
+    print(f"Polarity: {polarity}, Subjectivity: {subjectivity}")
+
+    # Placeholder: Use these values to select a playlist (will integrate dataset later)
+    if polarity > 0:
+        playlist = ["Happy Song 1", "Happy Song 2", "Happy Song 3"]
+    elif polarity < 0:
+        playlist = ["Sad Song 1", "Sad Song 2", "Sad Song 3"]
     else:
-        playlist = ["Song G", "Song H", "Song I"]
+        playlist = ["Neutral Song 1", "Neutral Song 2", "Neutral Song 3"]
 
     return render_template("playlist.html", mood=mood, playlist=playlist)
 
