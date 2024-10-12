@@ -1,7 +1,11 @@
+import pandas as pd
 from flask import Flask, render_template, request
 from textblob import TextBlob
 
 app = Flask(__name__)
+
+# Load the Musical Sentiment Dataset (assuming it’s saved as 'musical_sentiment.csv')
+df = pd.read_csv('musical_sentiment.csv')
 
 @app.route("/")
 def home():
@@ -15,19 +19,22 @@ def generate_playlist():
     analysis = TextBlob(mood)
     polarity = analysis.sentiment.polarity  # Polarity: -1 to 1 (negative to positive)
     subjectivity = analysis.sentiment.subjectivity  # Subjectivity: 0 to 1 (objective to subjective)
-
-    # For now, we'll print out polarity and subjectivity just for testing
-    print(f"Polarity: {polarity}, Subjectivity: {subjectivity}")
-
-    # Placeholder: Use these values to select a playlist (will integrate dataset later)
+    
+    # Basic mapping logic using valence_tags from dataset
+    # If polarity is positive, select songs with higher valence_tags (>0.5)
     if polarity > 0:
-        playlist = ["Happy Song 1", "Happy Song 2", "Happy Song 3"]
+        playlist = df[df['valence_tags'] > 0.5][['track', 'artist']].head(3)
+    # If polarity is negative, select songs with lower valence_tags (<0.5)
     elif polarity < 0:
-        playlist = ["Sad Song 1", "Sad Song 2", "Sad Song 3"]
+        playlist = df[df['valence_tags'] < 0.5][['track', 'artist']].head(3)
+    # If neutral, select random songs
     else:
-        playlist = ["Neutral Song 1", "Neutral Song 2", "Neutral Song 3"]
+        playlist = df[['track', 'artist']].sample(3)
 
-    return render_template("playlist.html", mood=mood, playlist=playlist)
+    # Create a list of strings like "song_name by artist_name"
+    formatted_playlist = [f"{row['track']} by {row['artist']}" for index, row in playlist.iterrows()]
+
+    return render_template("playlist.html", mood=mood, playlist=formatted_playlist)
 
 if __name__ == "__main__":
     app.run(debug=True)
