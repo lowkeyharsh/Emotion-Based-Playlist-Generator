@@ -10,9 +10,9 @@
     <h1>Your Playlist Based on Your Mood: "{{ mood }}"</h1>
     <h2>Here are some songs to match your mood:</h2>
     <ul>
-        <!-- Loop over the playlist and display each song -->
+        <!-- Loop over the playlist and display each song with the formatting -->
         {% for song in playlist %}
-            <li>{{ song }}</li>
+            <li><strong>{{ song.split(' by ')[0] }}</strong> by <em>{{ song.split(' by ')[1] }}</em></li>
         {% endfor %}
     </ul>
 
