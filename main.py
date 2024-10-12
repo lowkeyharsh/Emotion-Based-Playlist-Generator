@@ -4,8 +4,8 @@ from textblob import TextBlob
 
 app = Flask(__name__)
 
-# Load the Musical Sentiment Dataset (assuming it’s saved as 'musical_sentiment.csv')
-df = pd.read_csv('musical_sentiment.csv')
+# Load the Musical Sentiment Dataset from the Data folder
+df = pd.read_csv('Data/musical_sentiment.csv')
 
 @app.route("/")
 def home():
