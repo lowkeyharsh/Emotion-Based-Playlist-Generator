@@ -1,22 +1,28 @@
+<!-- playlist.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generated Playlist</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Your Playlist</title>
 </head>
 <body>
     <h1>Your Playlist Based on Your Mood: "{{ mood }}"</h1>
-    <h2>Here are some songs to match your mood:</h2>
     <ul>
-        <!-- Loop over the playlist and display each song with the formatting -->
         {% for song in playlist %}
-            <li><strong>{{ song.split(' by ')[0] }}</strong> by <em>{{ song.split(' by ')[1] }}</em></li>
+            <li>
+                <strong>{{ song.track }}</strong> by <em>{{ song.artist }}</em>
+                {% if song.preview_url %}
+                    <!-- Audio player for the Spotify preview URL -->
+                    <audio controls>
+                        <source src="{{ song.preview_url }}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                {% else %}
+                    <p>No preview available</p>
+                {% endif %}
+            </li>
         {% endfor %}
     </ul>
-
-    <!-- Button to go back to the homepage -->
     <form action="{{ url_for('home') }}">
         <button type="submit">Generate Another Playlist</button>
     </form>
