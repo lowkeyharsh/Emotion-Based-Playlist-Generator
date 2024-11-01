@@ -1,17 +1,20 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emotion-Based Playlist Generator</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Welcome to the Emotion-Based Playlist Generator</h1>
-    <form action="/generate_playlist" method="POST">
-        <label for="mood">Describe your mood:</label>
-        <input type="text" id="mood" name="mood" placeholder="e.g., happy, sad, energetic" required><br>
-        <input type="submit" value="Generate Playlist">
-    </form>
+    <div class="card">
+        <h1>Welcome to the Emotion-Based Playlist Generator</h1>
+        <p class="subtitle">Generate a playlist that matches your current mood</p>
+        <form action="{{ url_for('generate_playlist') }}" method="post">
+            <label for="mood">Describe your mood:</label>
+            <input type="text" id="mood" name="mood" placeholder="e.g., happy, sad, energetic">
+            <button type="submit">Generate Playlist</button>
+        </form>
+    </div>
 </body>
 </html>
