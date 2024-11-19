@@ -92,15 +92,19 @@ def select_songs_by_mood(profile: str) -> list:
     print(f"Filtered songs for profile '{profile}':", filtered_songs[['track', 'artist']].head())
 
     song_list = []
-    for _, row in filtered_songs.sample(n=3, random_state=random.randint(0, 100)).iterrows():
+    for _, row in filtered_songs.sample(frac=1).iterrows():  # Shuffle filtered songs for randomness
         print("Processing track:", row['track'], "by artist:", row['artist'])  # Debug track and artist
         preview_url = get_spotify_preview_url(row['track'], row['artist'])
-        print("Preview URL:", preview_url)  # Check if preview URL is retrieved
-        song_list.append({
-            'track': row['track'],
-            'artist': row['artist'],
-            'preview_url': preview_url
-        })
+        if preview_url:  # Only add songs with a preview URL
+            print("Preview URL:", preview_url)  # Check if preview URL is retrieved
+            song_list.append({
+                'track': row['track'],
+                'artist': row['artist'],
+                'preview_url': preview_url
+            })
+        if len(song_list) == 3:  # Stop once 3 songs with previews are added
+            break
+
     return song_list
 
 @app.route("/")
