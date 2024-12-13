@@ -85,21 +85,24 @@ Ensure you’ve followed the installation and setup instructions from the [User�
     - Improve error messages for users.
     - Add automated testing to ensure robustness.
 
+5. **Track Previews**:
+    - Give the ability to preview a 30 second clip from the song using Spotify's API in the app itself.
+
 ---
 
 ## Screenshots
 
 **Signup Page:**
-![Signup Page](https://github.com/user-attachments/assets/signup-screenshot.png)
+<img width="1302" alt="Screenshot 2024-12-13 at 11 25 13 PM" src="https://github.com/user-attachments/assets/6ca5bec0-b0b9-4772-9f95-074adcbc7bc3" />
 
 **Login Page:**
-![Login Page](https://github.com/user-attachments/assets/login-screenshot.png)
+<img width="1302" alt="Screenshot 2024-12-13 at 11 25 28 PM" src="https://github.com/user-attachments/assets/31ac15ab-0ca4-425c-b985-c975262c1222" />
 
 **Mood Input Page:**
-![Mood Input Page](https://github.com/user-attachments/assets/input-screenshot.png)
+<img width="1300" alt="Screenshot 2024-12-13 at 11 28 10 PM" src="https://github.com/user-attachments/assets/ebed9950-aea4-4c02-b1c1-a2aa4cce6812" />
 
 **Generated Playlist:**
-![Generated Playlist](https://github.com/user-attachments/assets/playlist-screenshot.png)
+<img width="1311" alt="Screenshot 2024-12-13 at 11 28 22 PM" src="https://github.com/user-attachments/assets/73cf98ab-328e-4742-b65f-011cefbd040e" />
 
 ---
 
