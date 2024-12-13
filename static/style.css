@@ -1,9 +1,7 @@
-/* style.css */
-
 /* General page styling */
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom right, #eceff1, #90caf9);
+    background: linear-gradient(to bottom right, #f0f4f8, #90caf9);
     margin: 0;
     padding: 0;
     display: flex;
@@ -12,34 +10,57 @@ body {
     min-height: 100vh;
 }
 
-/* Card design */
+/* Logout section styling */
+.logout-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #333;
+}
+
+.logout-btn {
+    padding: 8px 15px;
+    font-size: 14px;
+    background-color: #e57373;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #d32f2f;
+}
+
+/* Card styling for the playlist and main content */
 .card {
-    background-color: #ffffff;
+    background: white;
     padding: 40px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
     text-align: center;
-    width: 400px;
 }
 
 /* Heading and subtitle styling */
 h1 {
-    font-size: 24px;
+    font-size: 26px;
     color: #333333;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .subtitle {
     font-size: 16px;
     color: #666666;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 /* Form styling */
 form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin-top: 20px;
 }
 
 label {
@@ -49,24 +70,24 @@ label {
 }
 
 input[type="text"] {
-    padding: 10px;
+    padding: 12px;
     font-size: 14px;
-    border: 1px solid #cccccc;
-    border-radius: 4px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
     width: 100%;
     margin-bottom: 20px;
 }
 
-/* Blue button styling */
+/* Button styling */
 button {
+    padding: 12px;
+    font-size: 16px;
     background-color: #1976D2;
     color: white;
     border: none;
-    padding: 10px 20px;
-    font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease;
     width: 100%;
 }
 
@@ -74,49 +95,113 @@ button:hover {
     background-color: #1565C0;
 }
 
-/* Playlist page styling */
+/* Playlist card styling */
 .playlist {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 25px;
+    margin-top: 30px;
 }
 
-/* Song card styling */
 .song-card {
-    background-color: #f9f9f9;
-    border: 1px solid #dddddd;
-    border-radius: 5px;
-    padding: 15px;
-    margin: 10px 0;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.song-card:hover {
+    transform: translateY(-2px);
+}
+
+.song-details {
+    text-align: left;
+    flex-grow: 1;
+}
+
+.song-info {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333333;
+}
+
+.song-info em {
+    font-style: italic;
+    font-weight: normal;
+    color: #666666;
+}
+
+.spotify-link {
+    font-size: 14px;
+    color: #1DB954;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.spotify-link:hover {
+    text-decoration: underline;
+}
+
+.auth-card {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
+    max-width: 400px;
     text-align: center;
 }
 
-strong {
-    color: #222222;
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
+.auth-card h1 {
+    font-size: 26px;
+    color: #333333;
+    margin-bottom: 20px;
 }
 
-em {
-    color: #666666;
-    font-style: italic;
-    display: block;
-    margin-bottom: 10px;
+.auth-card input[type="text"], 
+.auth-card input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
 }
 
-/* Audio player styling */
-audio {
-    display: block;
-    margin: 10px auto;
-    border: 1px solid #cccccc;
-    border-radius: 4px;
+.auth-card button {
+    width: 100%;
+    padding: 12px;
+    background-color: #1976D2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.no-preview {
-    color: #888888;
+.auth-card button:hover {
+    background-color: #1565C0;
+}
+
+.auth-card p {
     font-size: 14px;
-    margin: 10px 0;
-    font-style: italic;
+    color: #555555;
+    margin-top: 10px;
+}
+
+.auth-card a {
+    color: #1976D2;
+    text-decoration: none;
+    font-weight:bold;
+}
+
+.auth-card a:hover {
+    text-decoration: underline;
 }
